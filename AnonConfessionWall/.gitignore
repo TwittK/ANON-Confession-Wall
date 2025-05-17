@@ -1,0 +1,36 @@
+# Build results
+bin/
+obj/
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ASP.NET stuff
+wwwroot/lib/
+.env
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Logs
+*.log
+
+# VS Code settings
+.vscode/
+
+# Rider
+.idea/
+
+# Secrets
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# Others
+*.db
+*.pfx
+*.p12
