@@ -1,36 +1,36 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net8.0": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Tristan\\.nuget\\packages\\": {}
+    "/home/student19/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tristan\\OneDrive\\SIT\\2.3\\ICT2116\\Project\\ANON-Confession-Wall\\AnonConfessionWall\\AnonConfessionWall.csproj",
+      "projectUniqueName": "/home/student19/ICT2116proj/ANON-Confession-Wall/AnonConfessionWall/AnonConfessionWall.csproj",
       "projectName": "AnonConfessionWall",
-      "projectPath": "C:\\Users\\Tristan\\OneDrive\\SIT\\2.3\\ICT2116\\Project\\ANON-Confession-Wall\\AnonConfessionWall\\AnonConfessionWall.csproj",
-      "packagesPath": "C:\\Users\\Tristan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tristan\\OneDrive\\SIT\\2.3\\ICT2116\\Project\\ANON-Confession-Wall\\AnonConfessionWall\\obj\\",
+      "projectPath": "/home/student19/ICT2116proj/ANON-Confession-Wall/AnonConfessionWall/AnonConfessionWall.csproj",
+      "packagesPath": "/home/student19/.nuget/packages/",
+      "outputPath": "/home/student19/ICT2116proj/ANON-Confession-Wall/AnonConfessionWall/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Tristan\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/student19/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net9.0"
+        "net8.0"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -38,17 +38,11 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+      }
     },
     "frameworks": {
-      "net9.0": {
-        "targetAlias": "net9.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "imports": [
           "net461",
           "net462",
@@ -68,7 +62,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.116/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
