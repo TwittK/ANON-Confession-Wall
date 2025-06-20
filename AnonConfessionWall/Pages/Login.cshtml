@@ -1,0 +1,60 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = null; // Standalone layout
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Thinkeroo</title>
+
+    <!-- Bootstrap + Login CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+</head>
+<body>
+    <div class="login-card">
+        <div class="text-center mb-4">
+            <div class="brand">
+                <i class="fas fa-user-astronaut"></i> Thinkeroo
+            </div>
+            <p class="text-muted">Welcome back! Please login to continue.</p>
+        </div>
+
+        <form method="post">
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" type="email" placeholder="you@example.com" />
+                <span asp-validation-for="Email" class="text-danger small"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" class="form-control" type="password" placeholder="********" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="form-check">
+                    <input asp-for="RememberMe" class="form-check-input" />
+                    <label class="form-check-label" asp-for="RememberMe">Remember me</label>
+                </div>
+                <a href="#" class="text-decoration-none text-primary small">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+
+        <hr class="my-4" />
+
+        <div class="text-center">
+            <p class="mb-0">Don't have an account?</p>
+            <a asp-page="/Register" class="btn btn-outline-secondary mt-2">Create Account</a>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

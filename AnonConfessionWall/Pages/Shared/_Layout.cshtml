@@ -3,50 +3,102 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AnonConfessionWall</title>
-    <script type="importmap"></script>
+    <title>@ViewData["Title"] - Thinkeroo</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AnonConfessionWall.styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" asp-append-version="true">
+    
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">AnonConfessionWall</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<body class="d-flex flex-column min-vh-100">
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - AnonConfessionWall - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <div class="d-flex flex-grow-1">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="responsiveSidebar">
+            <div class="recent-posts">
+                <h5 class="mb-4">Recently viewed posts</h5>
+
+                <div class="post-item">
+                    <a href="#" class="d-block fw-bold text-decoration-none">Confession: Feeling overwhelmed...</a>
+                    <small>2 hours ago</small>
+                </div>
+                <div class="post-item">
+                    <a href="#" class="d-block fw-bold text-decoration-none">Feedback: Library closes too early</a>
+                    <small>1 day ago</small>
+                </div>
+                <div class="post-item">
+                    <a href="#" class="d-block fw-bold text-decoration-none">Health: Burnout creeping in</a>
+                    <small>Just now</small>
+                </div>
+                <h5 class="mt-5 mb-3">Browse Sections</h5>
+                <ul class="nav nav-pills flex-column gap-2" id="confessionTab">
+                    <li class="nav-item mb-2">
+                        <button class="nav-link d-flex align-items-center gap-2 active" data-bs-toggle="pill" data-bs-target="#trending" type="button"><img src="~/images/trending.png" alt="trending" width="16" height="16" />
+                                Trending</button>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <button class="nav-link d-flex align-items-center gap-2" data-bs-toggle="pill" data-bs-target="#feedback" type="button"><img src="~/images/feedback.png" alt="feedback" width="16" height="16" />
+                                Feedback</button>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <button class="nav-link d-flex align-items-center gap-2" data-bs-toggle="pill" data-bs-target="#health" type="button"><img src="~/images/heart.png" alt="health" width="16" height="16" />
+                                Health</button>
+                    </li>
+                </ul>
+
+            </div>
+        </aside>
+
+
+        <div class="main-content">
+            <!-- Top navbar -->
+            <nav class="top-navbar px-4 py-2">
+    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-outline-primary d-lg-none" type="button" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </footer>
+
+        <form class="search-box d-flex flex-grow-1 justify-content-center mt-2 mt-lg-0">
+            <input class="form-control me-2 w-75" type="search" placeholder="Search confessions..." aria-label="Search">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+
+        <div class="mt-2 mt-lg-0">
+            <a asp-page="/Login" class="btn btn-outline-secondary me-2">Login</a>
+            <a asp-page="/Register" class="btn btn-primary">Register</a>
+        </div>
+    </div>
+</nav>
+
+
+            <div class="container-fluid p-4">
+                <main role="main">
+                    @RenderBody()
+                </main>
+            </div>
+
+            <footer class="mt-auto border-top footer text-muted py-3 px-4">
+                <div class="container-fluid text-end">
+                    &copy; 2025 - AnonConfessionWall - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                </div>
+            </footer>
+        </div>
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+  document.getElementById("sidebarToggle").addEventListener("click", function () {
+    document.getElementById("responsiveSidebar").classList.toggle("show");
+  });
+</script>
+
 </body>
+
 </html>

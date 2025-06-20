@@ -1,10 +1,144 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Confession Wall";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome GitHub CHANGES</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container py-5">
+    <h2 class="text-center text-dark fw-bold mb-5 display-5">Thinkeroo Confession Wall</h2>
+
+    <!-- Create Post Button -->
+    <div class="text-end mb-3">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createPostModal">
+            <i class="fas fa-plus"></i> Create Post
+        </button>
+    </div>
+
+    <div class="tab-content text-dark" id="confessionTabContent">
+
+        <div class="tab-pane fade show active" id="trending" role="tabpanel">
+            @foreach (var post in Model.TrendingPosts)
+            {
+                <div class="card bg-light border border-warning mb-4 shadow-sm rounded-lg">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning">Anonymous Confession</h5>
+                        <p class="card-text">@post.Content</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <button class="btn btn-sm btn-outline-success rounded-pill px-3 d-flex align-items-center gap-1">
+                                    <img src="~/images/upvote.png" alt="Upvote" width="16" height="16" />
+                                    Upvote <span class="badge bg-success ms-1">20</span>
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 d-flex align-items-center gap-1">
+                                    <img src="~/images/comment.png" alt="Comment" width="16" height="16" />
+                                    Comment
+                                </button>
+
+                                <button class="btn btn-sm btn-outline-danger rounded-pill px-3 d-flex align-items-center gap-1">
+                                    <img src="~/images/report.png" alt="Report" width="16" height="16" />
+                                    Report
+                                </button>
+                            </div>
+                            <small class="text-muted"><img src="~/images/date.png" alt="date" width="16" height="16" /> Posted @post.PostedAt.ToShortTimeString()</small>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+        <div class="tab-pane fade" id="feedback" role="tabpanel">
+            @foreach (var post in Model.FeedbackPosts)
+            {
+                <div class="card bg-light border border-info mb-4 shadow-sm rounded-lg">
+                    <div class="card-body">
+                        <h5 class="card-title text-info">Feedback</h5>
+                        <p class="card-text">@post.Content</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <button class="btn btn-sm btn-outline-success rounded-pill px-3 d-flex align-items-center gap-1">
+                                    <img src="~/images/upvote.png" alt="Upvote" width="16" height="16" />
+                                    Upvote <span class="badge bg-success ms-1">20</span>
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 d-flex align-items-center gap-1">
+                                    <img src="~/images/comment.png" alt="Comment" width="16" height="16" />
+                                    Comment
+                                </button>
+
+                                <button class="btn btn-sm btn-outline-danger rounded-pill px-3 d-flex align-items-center gap-1">
+                                    <img src="~/images/report.png" alt="Report" width="16" height="16" />
+                                    Report
+                                </button>
+                            </div>
+                            <small class="text-muted"><img src="~/images/date.png" alt="date" width="16" height="16" /> Posted @post.PostedAt.ToShortTimeString()</small>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+        <div class="tab-pane fade" id="health" role="tabpanel">
+            @foreach (var post in Model.HealthPosts)
+            {
+                <div class="card bg-light border border-danger mb-4 shadow-sm rounded-lg">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">Health Concern</h5>
+                        <p class="card-text">@post.Content</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <button class="btn btn-sm btn-outline-success rounded-pill px-3 d-flex align-items-center gap-1">
+                                    <img src="~/images/upvote.png" alt="Upvote" width="16" height="16" />
+                                    Upvote <span class="badge bg-success ms-1">20</span>
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 d-flex align-items-center gap-1">
+                                    <img src="~/images/comment.png" alt="Comment" width="16" height="16" />
+                                    Comment
+                                </button>
+
+                                <button class="btn btn-sm btn-outline-danger rounded-pill px-3 d-flex align-items-center gap-1">
+                                    <img src="~/images/report.png" alt="Report" width="16" height="16" />
+                                    Report
+                                </button>
+                            </div>
+                            <small class="text-muted"><img src="~/images/date.png" alt="date" width="16" height="16" /> Posted @post.PostedAt.ToShortTimeString()</small>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+
+    <!-- Create Post Modal -->
+    <div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" asp-page-handler="Create">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createPostModalLabel">New Confession</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label asp-for="NewPost.Category" class="form-label">Category</label>
+                        <select asp-for="NewPost.Category" class="form-select">
+                            <option value="Feedback">Feedback</option>
+                            <option value="Health">Health</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="NewPost.Content" class="form-label">Confession</label>
+                        <textarea asp-for="NewPost.Content" class="form-control" rows="4" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
 </div>
