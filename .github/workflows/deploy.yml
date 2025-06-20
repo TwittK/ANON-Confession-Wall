@@ -67,4 +67,5 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_KEY }}
         script: |
+          rm -rf /home/${{ secrets.EC2_USER }}/anonconfessionwall/*
           sudo systemctl restart aspnetapp
