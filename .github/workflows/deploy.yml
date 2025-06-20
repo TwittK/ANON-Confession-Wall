@@ -21,16 +21,16 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore AnonConfessionWall/AnonConfessionWall.csproj
 
     - name: Build project
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build AnonConfessionWall/AnonConfessionWall.csproj --configuration Release --no-restore
 
     - name: Run tests (optional)
-      run: dotnet test --no-build || echo "No tests found or failed"
+      run: dotnet test AnonConfessionWall/AnonConfessionWall.csproj --no-build || echo "No tests found or failed"
 
     - name: Publish app
-      run: dotnet publish -c Release -o publish
+      run: dotnet publish AnonConfessionWall/AnonConfessionWall.csproj -c Release -o publish
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
