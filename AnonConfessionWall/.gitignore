@@ -16,3 +16,7 @@ obj/
 
 # Others
 *.db
+
+# Local development migration to local mysql
+Migrations/Development/
+
