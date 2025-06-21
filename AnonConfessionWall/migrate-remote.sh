@@ -6,7 +6,8 @@ EC2_HOST="3.15.165.2"
 SSH_KEY_PATH="$HOME/.ssh/ICT2216-student19.pem"
 LOCAL_PORT=8080
 REMOTE_PORT=3306
-MIGRATION_NAME="$1"  # Optional: pass migration name as first argument
+MIGRATION_NAME="$1"
+MIGRATION_DIR="Migrations/Deployment"
 
 # === Step 1: Check if PEM file is in ssh folder ===
 if [ ! -f "$SSH_KEY_PATH" ]; then
@@ -36,7 +37,7 @@ if [ -z "$MIGRATION_NAME" ]; then
 fi
 
 echo "Creating EF migration: $MIGRATION_NAME"
-dotnet ef migrations add "$MIGRATION_NAME"
+dotnet ef migrations add "$MIGRATION_NAME" --output-dir "$MIGRATION_DIR" --context AppDbContext
 if [ $? -ne 0 ]; then
   echo "Migration failed. Cleaning up SSH tunnel..."
   kill "$TUNNEL_PID"
@@ -44,7 +45,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Applying migration to remote MySQL database..."
-dotnet ef database update
+dotnet ef database update -- --environment Production
 if [ $? -ne 0 ]; then
   echo "Database update failed. Cleaning up SSH tunnel..."
   kill "$TUNNEL_PID"
